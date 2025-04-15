@@ -40,9 +40,10 @@ public class TeacherDAOImpl implements ITeacherDAO {
             ResultSet rsGeneratedKeys = ps.getGeneratedKeys();
             if (rsGeneratedKeys.next()) {
                 int generatedId = rsGeneratedKeys.getInt(1);
-                insertedTeacher =  getById(generatedId);
+                insertedTeacher = getById(generatedId);
             }
-            // logging
+            // some logging
+
             return insertedTeacher;
         } catch (SQLException e) {
             //e.printStackTrace();
@@ -83,7 +84,7 @@ public class TeacherDAOImpl implements ITeacherDAO {
             // logging
             return updatedTeacher;
         } catch (SQLException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             // logging
             throw new TeacherDAOException("SQL error in update teacher with vat: " + teacher.getVat());
         }

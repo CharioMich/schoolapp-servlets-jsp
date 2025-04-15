@@ -20,7 +20,7 @@
         <p class="text-center text-2xl">Επιλογή Κατηγορίας</p>
         <div class="flex flex-row items-center justify-center h-64 text-center space-x-10">
             <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-5 px-8 rounded" href="<c:url value='${pageContext.request.contextPath}/school-app/teachers/view' />">Προβολή Καθηγητών</a>
-            <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-5 px-8 rounded" href="#">Προβολή Μαθητών</a>
+            <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-5 px-8 rounded" href="<c:url value='${pageContext.request.contextPath}/school-app/students/view' />">Προβολή Μαθητών</a>
         </div>
     </main>
     <%@ include file="footer.jsp"%>

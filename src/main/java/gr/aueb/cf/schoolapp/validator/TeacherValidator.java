@@ -15,7 +15,7 @@ public class TeacherValidator<T> {
         Map<String, String> errors = new HashMap<>();
 
         if (dto.getFirstname().length() < 2 || dto.getFirstname().length() > 32) {
-            errors.put("firstname", "Το όνομα πρέπει να είναι 2 και 32 χαρακτήρες");
+            errors.put("firstname", "Το όνομα πρέπει να είναι μεταξύ 2 και 32 χαρακτήρες");
         }
 
         if (dto.getFirstname().matches("^.*\\s+.*$")) {
@@ -23,7 +23,7 @@ public class TeacherValidator<T> {
         }
 
         if (dto.getLastname().length() < 2 || dto.getLastname().length() > 32) {
-            errors.put("lastname", "Το επώνυμο πρέπει να είναι 2 και 32 χαρακτήρες");
+            errors.put("lastname", "Το επώνυμο πρέπει να είναι μεταξύ 2 και 32 χαρακτήρες");
         }
 
         if (dto.getLastname().matches("^.*\\s+.*$")) {
@@ -39,7 +39,7 @@ public class TeacherValidator<T> {
         }
 
         if (dto.getFatherName().length() < 2 || dto.getFatherName().length() > 32) {
-            errors.put("fathernane", "Το Επώνυμο Πατρός πρέπει να είναι μεταξύ 2 και 32 ψηφία");
+            errors.put("fathernane", "Το Επώνυμο Πατρός πρέπει να είναι μεταξύ 2 και 32 χαρακτήρες");
         }
 
         if (dto.getFatherName().matches("^.*\\s+.*$")) {
@@ -55,7 +55,7 @@ public class TeacherValidator<T> {
         }
 
 
-        // More validations
+        // More validations ...
 
         return errors;
     }

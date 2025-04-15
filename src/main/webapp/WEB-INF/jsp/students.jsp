@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Προβολή Καθηγητών</title>
+    <title>Προβολή Μαθητών</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -48,15 +48,15 @@
     <!-- Page Header -->
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
-            <h1 class="text-2xl font-bold text-gray-800">Καθηγητές</h1>
-            <p class="text-gray-600">Διαχείριση και προβολή καθηγητών</p>
+            <h1 class="text-2xl font-bold text-gray-800">Μαθητές</h1>
+            <p class="text-gray-600">Διαχείριση και προβολή μαθητών</p>
         </div>
 
         <c:if test="${sessionScope.role == 'ADMIN'}">
             <a href="${pageContext.request.contextPath}/school-app/teachers/insert"
                class="inline-flex items-center px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white font-medium rounded-lg transition-colors duration-200 shadow-sm">
                 <i class="fas fa-plus mr-2"></i>
-                Εισαγωγή Καθηγητή
+                Εισαγωγή Μαθητή
             </a>
         </c:if>
     </div>
@@ -64,7 +64,7 @@
     <!-- Search Card -->
     <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden mb-8">
         <div class="p-6">
-            <h2 class="text-lg font-semibold text-gray-800 mb-4">Αναζήτηση Καθηγητών</h2>
+            <h2 class="text-lg font-semibold text-gray-800 mb-4">Αναζήτηση Μαθητών</h2>
             <form id="filterForm" method="GET" action="${pageContext.request.contextPath}/school-app/teachers/view" class="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div>
                     <label for="firstname" class="block text-sm font-medium text-gray-700 mb-1">Όνομα</label>
@@ -138,7 +138,7 @@
                         <c:otherwise>
                             <tr>
                                 <td colspan="4" class="px-6 py-4 text-center text-sm text-gray-500">
-                                    Δεν βρέθηκαν καθηγητές
+                                    Δεν βρέθηκαν μαθητές
                                 </td>
                             </tr>
                         </c:otherwise>

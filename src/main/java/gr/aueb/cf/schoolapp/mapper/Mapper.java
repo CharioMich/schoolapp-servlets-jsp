@@ -2,6 +2,10 @@ package gr.aueb.cf.schoolapp.mapper;
 
 import gr.aueb.cf.schoolapp.core.RoleType;
 import gr.aueb.cf.schoolapp.dto.*;
+import gr.aueb.cf.schoolapp.dto.student.StudentInsertDTO;
+import gr.aueb.cf.schoolapp.dto.student.StudentReadOnlyDTO;
+import gr.aueb.cf.schoolapp.dto.student.StudentUpdateDTO;
+import gr.aueb.cf.schoolapp.model.Student;
 import gr.aueb.cf.schoolapp.model.Teacher;
 import gr.aueb.cf.schoolapp.model.User;
 
@@ -11,6 +15,7 @@ public class Mapper {
 
     private Mapper() {}
 
+    // MAPPING TEACHERS
     public static Teacher mapTeacherInsertToModel(TeacherInsertDTO dto) {
 //        return new Teacher(null, dto.getFirstname(), dto.getLastname(), dto.getVat(),
 //                        dto.getFatherName(), dto.getPhoneNum(), dto.getEmail(), dto.getStreet(), dto.getStreetNum(),
@@ -37,6 +42,23 @@ public class Mapper {
                 teacher.getEmail(), teacher.getStreet(), teacher.getStreetNum(), teacher.getZipCode(), teacher.getCityId()));
     }
 
+    // MAPPING STUDENTS
+    public static Student mapStudentInsertToModel(StudentInsertDTO dto) {
+        return new Student(null, dto.getFirstname(), dto.getLastname(), dto.getEmail(), dto.getCityId(), null, null, null);
+    }
+
+    public static Student mapTeacherUpdateToModel(StudentUpdateDTO dto) {
+        return new Student(dto.getId(), dto.getFirstname(), dto.getLastname(), dto.getEmail(), dto.getCityId(), null, null, null);
+    }
+
+    public static Optional<StudentReadOnlyDTO> mapStudentToReadOnlyDTO(Student student) {
+        if (student == null) return Optional.empty();
+        return Optional.of(new StudentReadOnlyDTO(student.getId(), student.getUuid(), student.getFirstname(),
+                student.getLastname(), student.getEmail(), student.getCityId()));
+    }
+
+
+    // MAPPING USERS
     public static UserReadOnlyDTO mapToReadOnlyDTO(User user) {
         return new UserReadOnlyDTO(user.getId(), user.getUsername(), user.getPassword());
     }

@@ -17,7 +17,7 @@ public class DBUtil {
 		//ds.setPassword(System.getenv("PASS_USER7")); need to set env variable
 		ds.setPassword("12345");
 
-		// Το Maven automatically detects the driver, no need for the following
+		// Maven automatically detects the driver, no need to do the following
 		// ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
 
 		ds.setInitialSize(10);
@@ -35,7 +35,7 @@ public class DBUtil {
 	
 	public static Connection getConnection() throws SQLException {
 		connection = ds.getConnection();
-		//System.out.println("Connection given");
+		//System.out.println("Connection established");
 		return connection;
 	}
 	
