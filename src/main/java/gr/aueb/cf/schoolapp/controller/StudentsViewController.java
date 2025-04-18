@@ -23,7 +23,7 @@ public class StudentsViewController extends HttpServlet {
     IStudentService studentService = new StudentServiceImpl(studentDAO);
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)              // TODO
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         List<StudentReadOnlyDTO> studentReadOnlyDTOS;

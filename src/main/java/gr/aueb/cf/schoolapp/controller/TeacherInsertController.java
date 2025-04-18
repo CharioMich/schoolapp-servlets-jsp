@@ -98,7 +98,7 @@ public class TeacherInsertController extends HttpServlet {
 
             // Call service if validation passed
             TeacherReadOnlyDTO readOnlyDTO = teacherService.insertTeacher(insertDTO);
-            req.getSession().setAttribute("teacherInfo", readOnlyDTO);
+            req.getSession().setAttribute("personInfo", readOnlyDTO);
             resp.sendRedirect(req.getContextPath() + "/school-app/teacher-inserted");
 
         } catch (TeacherDAOException | TeacherAlreadyExistsException e) {

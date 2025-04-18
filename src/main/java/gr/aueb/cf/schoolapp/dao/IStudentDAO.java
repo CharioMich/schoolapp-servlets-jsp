@@ -11,6 +11,7 @@ public interface IStudentDAO {
     Student update(Student student) throws StudentDAOException;
     void delete(Integer id) throws StudentDAOException;
     Student getById(Integer id) throws StudentDAOException;
+    Student getByEmail(String email) throws StudentDAOException;
     List<Student> getAll() throws StudentDAOException;
 
     List<Student> getByLastName(String lastname) throws StudentDAOException;

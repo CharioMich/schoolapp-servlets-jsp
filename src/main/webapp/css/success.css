@@ -6,14 +6,6 @@
     --dark-blue: #3b3b97;
 }
 
-body {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    place-items: center;
-}
-
 .success {
     display: flex;
     flex-direction: column;

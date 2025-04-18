@@ -53,7 +53,7 @@
         </div>
 
         <c:if test="${sessionScope.role == 'ADMIN'}">
-            <a href="${pageContext.request.contextPath}/school-app/teachers/insert"
+            <a href="${pageContext.request.contextPath}/school-app/students/insert"
                class="inline-flex items-center px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white font-medium rounded-lg transition-colors duration-200 shadow-sm">
                 <i class="fas fa-plus mr-2"></i>
                 Εισαγωγή Μαθητή
@@ -65,7 +65,7 @@
     <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden mb-8">
         <div class="p-6">
             <h2 class="text-lg font-semibold text-gray-800 mb-4">Αναζήτηση Μαθητών</h2>
-            <form id="filterForm" method="GET" action="${pageContext.request.contextPath}/school-app/teachers/view" class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <form id="filterForm" method="GET" action="${pageContext.request.contextPath}/school-app/students/view" class="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div>
                     <label for="firstname" class="block text-sm font-medium text-gray-700 mb-1">Όνομα</label>
                     <input type="text" name="firstname" id="firstname" placeholder="Όνομα"
@@ -106,26 +106,26 @@
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
                     <c:choose>
-                        <c:when test="${not empty requestScope.teachers}">
-                            <c:forEach var="teacher" items="${requestScope.teachers}">
+                        <c:when test="${not empty requestScope.students}">
+                            <c:forEach var="student" items="${requestScope.students}">
                                 <tr class="hover:bg-gray-50 transition-colors duration-150">
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${teacher.id}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${teacher.firstname}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${teacher.lastname}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${student.id}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${student.firstname}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${student.lastname}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-right">
                                         <div class="flex justify-end space-x-3">
-                                            <a href="${pageContext.request.contextPath}/school-app/teachers/view?id=${teacher.id}"
+                                            <a href="${pageContext.request.contextPath}/school-app/students/view?id=${student.id}"
                                                class="text-primary-500 hover:text-primary-600 p-1 rounded-full hover:bg-primary-50 transition-colors duration-200"
                                                title="Προβολή">
                                                 <i class="fas fa-eye w-5 h-5"></i>
                                             </a>
-                                            <a href="${pageContext.request.contextPath}/school-app/teachers/update?id=${teacher.id}"
+                                            <a href="${pageContext.request.contextPath}/school-app/students/update?id=${student.id}"
                                                class="text-warning-500 hover:text-warning-600 p-1 rounded-full hover:bg-warning-50 transition-colors duration-200"
                                                title="Επεξεργασία">
                                                 <i class="fas fa-pen-to-square w-5 h-5"></i>
                                             </a>
-                                            <a href="${pageContext.request.contextPath}/school-app/teachers/delete?id=${teacher.id}"
-                                               onclick="return confirm('Είστε βέβαιοι ότι θέλετε να διαγράψετε τον καθηγητή;')"
+                                            <a href="${pageContext.request.contextPath}/school-app/students/delete?id=${student.id}"
+                                               onclick="return confirm('Είστε βέβαιοι ότι θέλετε να διαγράψετε τον μαθητή;')"
                                                class="text-danger-500 hover:text-danger-600 p-1 rounded-full hover:bg-danger-50 transition-colors duration-200"
                                                title="Διαγραφή">
                                                 <i class="fas fa-trash-can w-5 h-5"></i>

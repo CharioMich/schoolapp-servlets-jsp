@@ -47,7 +47,7 @@ public class Mapper {
         return new Student(null, dto.getFirstname(), dto.getLastname(), dto.getEmail(), dto.getCityId(), null, null, null);
     }
 
-    public static Student mapTeacherUpdateToModel(StudentUpdateDTO dto) {
+    public static Student mapStudentUpdateToModel(StudentUpdateDTO dto) {
         return new Student(dto.getId(), dto.getFirstname(), dto.getLastname(), dto.getEmail(), dto.getCityId(), null, null, null);
     }
 

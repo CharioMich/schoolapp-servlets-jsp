@@ -29,7 +29,7 @@ public class StudentDAOIMpl implements IStudentDAO {
             ps.setString(5, UUID.randomUUID().toString());
             ps.setTimestamp(6, Timestamp.valueOf(LocalDateTime.now()));
             ps.setTimestamp(7, Timestamp.valueOf(LocalDateTime.now()));
-            ps.executeQuery();
+            ps.executeUpdate();
 
             ResultSet rsGeneratedKeys = ps.getGeneratedKeys();
             if (rsGeneratedKeys.next()) {
@@ -84,7 +84,7 @@ public class StudentDAOIMpl implements IStudentDAO {
                 PreparedStatement ps = connection.prepareStatement(sql)) {
 
             ps.setInt(1, id);
-            ps.executeQuery();
+            ps.executeUpdate();
 
             // some logging
         } catch (SQLException e) {
@@ -118,6 +118,33 @@ public class StudentDAOIMpl implements IStudentDAO {
             // logging
             // e.printStackTrace();
             throw new StudentDAOException("SQL Error in getting student with id: " + id);
+        }
+    }
+
+    @Override
+    public Student getByEmail(String email) throws StudentDAOException {
+        String sql = "SELECT * FROM students WHERE email = ?";
+        Student student = null;
+        ResultSet rs;
+
+        try (Connection connection = DBUtil.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setString(1, email);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                student = new Student(rs.getInt("id"), rs.getString("firstname"), rs.getString("lastname"), rs.getString("email"),
+                        rs.getInt("city_id"), rs.getString("uuid"), rs.getTimestamp("created_at").toLocalDateTime(),
+                        rs.getTimestamp("updated_at").toLocalDateTime());
+            }
+
+            return student;
+
+        } catch (SQLException e) {
+            // e.printStackTrace();
+            // logging
+            throw new StudentDAOException("Error in getting student by email " + email);
         }
     }
 

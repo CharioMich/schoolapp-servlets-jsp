@@ -12,17 +12,20 @@
     <title>Επιτυχής Εισαγωγή</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/success.css">
 </head>
-<body>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <%@ include file="header.jsp"%>
+    <div class="success m-auto">
+        <div class="m-auto text-center">
+            <h1 class="font-bold text-2xl mb-5">Επιτυχής Ενημέρωση</h1>
+            <p>Κωδικός: ${sessionScope.teacherInfo.id}</p>
+            <p>Όνομα: ${sessionScope.teacherInfo.firstname}</p>
+            <p>Επώνυμο: ${sessionScope.teacherInfo.lastname}</p>
+        </div>
 
-<div class="success m-bottom">
-    <h1>Επιτυχής Ενημέρωση</h1>
-    <p>Κωδικός: ${sessionScope.teacherInfo.id}</p>
-    <p>Όνομα: ${sessionScope.teacherInfo.firstname}</p>
-    <p>Επώνυμο: ${sessionScope.teacherInfo.lastname}</p>
-</div>
-
-<div>
-    <a href="${pageContext.request.contextPath}/school-app/teachers/view">Επιστροφή</a>
-</div>
+    </div>
+    <div class="text-center text-m underline text-blue-700 hover:text-blue-900 mb-5">
+		<a href="${pageContext.request.contextPath}/school-app/dashboard">Επιστροφή</a>
+	</div>
+	<%@ include file="footer.jsp"%>
 </body>
 </html>
