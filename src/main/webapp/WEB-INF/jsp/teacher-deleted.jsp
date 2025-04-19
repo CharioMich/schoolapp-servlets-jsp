@@ -22,7 +22,7 @@
     </div>
 
     <div class="text-center text-m underline text-blue-700 hover:text-blue-900 mb-5">
-        <a href="${pageContext.request.contextPath}/school-app/teachers/view">Επιστροφή</a>
+        <a href="${pageContext.request.contextPath}/school-app/dashboard">Επιστροφή</a>
     </div>
     <%@ include file="footer.jsp"%>
 </body>

@@ -13,6 +13,6 @@ public interface IStudentDAO {
     Student getById(Integer id) throws StudentDAOException;
     Student getByEmail(String email) throws StudentDAOException;
     List<Student> getAll() throws StudentDAOException;
-
     List<Student> getByLastName(String lastname) throws StudentDAOException;
+    List<Student> getFilteredStudents(String firstname, String lastname) throws StudentDAOException;
 }

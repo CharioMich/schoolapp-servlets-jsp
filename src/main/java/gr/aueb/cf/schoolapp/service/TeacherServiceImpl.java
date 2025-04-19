@@ -155,7 +155,7 @@ public class TeacherServiceImpl implements ITeacherService {
                     .flatMap(Optional::stream)
                     .collect(Collectors.toList());
         } catch (TeacherDAOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             // logging
             // rollback
             throw e;

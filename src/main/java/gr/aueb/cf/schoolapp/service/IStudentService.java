@@ -1,5 +1,6 @@
 package gr.aueb.cf.schoolapp.service;
 
+import gr.aueb.cf.schoolapp.dto.FiltersDTO;
 import gr.aueb.cf.schoolapp.dto.student.StudentInsertDTO;
 import gr.aueb.cf.schoolapp.dto.student.StudentReadOnlyDTO;
 import gr.aueb.cf.schoolapp.dto.student.StudentUpdateDTO;
@@ -16,4 +17,5 @@ public interface IStudentService {
     StudentReadOnlyDTO getStudentById(Integer id) throws StudentDAOException, StudentNotFoundException;
     List<StudentReadOnlyDTO> getAllStudents() throws StudentDAOException;
     List<StudentReadOnlyDTO> getStudentsByLastname(String lastname) throws StudentDAOException;
+    List<StudentReadOnlyDTO> getFilteredStudents(FiltersDTO filters) throws StudentDAOException;
 }

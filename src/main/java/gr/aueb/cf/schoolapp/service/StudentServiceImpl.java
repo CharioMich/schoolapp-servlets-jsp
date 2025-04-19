@@ -1,6 +1,7 @@
 package gr.aueb.cf.schoolapp.service;
 
 import gr.aueb.cf.schoolapp.dao.IStudentDAO;
+import gr.aueb.cf.schoolapp.dto.FiltersDTO;
 import gr.aueb.cf.schoolapp.dto.student.StudentInsertDTO;
 import gr.aueb.cf.schoolapp.dto.student.StudentReadOnlyDTO;
 import gr.aueb.cf.schoolapp.dto.student.StudentUpdateDTO;
@@ -116,6 +117,20 @@ public class StudentServiceImpl implements IStudentService {
                     .flatMap(Optional::stream)
                     .collect(Collectors.toList());
 
+        } catch (StudentDAOException e) {
+            throw e;
+        }
+    }
+
+    @Override
+    public List<StudentReadOnlyDTO> getFilteredStudents(FiltersDTO filters) throws StudentDAOException {
+        List<Student> students;
+        try {
+            students = studentDAO.getFilteredStudents(filters.getFirstname(), filters.getLastname());
+            return students.stream()
+                    .map(Mapper::mapStudentToReadOnlyDTO)
+                    .flatMap(Optional::stream)
+                    .collect(Collectors.toList());
         } catch (StudentDAOException e) {
             throw e;
         }

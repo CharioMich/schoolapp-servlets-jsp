@@ -38,8 +38,8 @@ public class StudentsViewController extends HttpServlet {
         String message = "";
 
         try {
-            // studentReadOnlyDTOS = studentService.getFilteredStudents(filters);
-            studentReadOnlyDTOS = studentService.getAllStudents();
+            studentReadOnlyDTOS = studentService.getFilteredStudents(filters);
+            // studentReadOnlyDTOS = studentService.getAllStudents();
 
             if (studentReadOnlyDTOS.isEmpty()) {
                 request.setAttribute("message", "No students found");
