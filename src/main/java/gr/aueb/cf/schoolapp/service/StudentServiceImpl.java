@@ -10,8 +10,6 @@ import gr.aueb.cf.schoolapp.exceptions.StudentNotFoundException;
 import gr.aueb.cf.schoolapp.mapper.Mapper;
 import gr.aueb.cf.schoolapp.model.Student;
 
-import javax.swing.text.html.Option;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -23,8 +21,6 @@ public class StudentServiceImpl implements IStudentService {
     public StudentServiceImpl(IStudentDAO studentDAO) {
         this.studentDAO = studentDAO;
     }
-
-    // TODO
 
     @Override
     public StudentReadOnlyDTO insertStudent(StudentInsertDTO dto) throws StudentDAOException, StudentAlreadyExistsException {
@@ -47,18 +43,50 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     @Override
-    public StudentReadOnlyDTO updateStudent(StudentUpdateDTO dto) throws StudentDAOException, StudentNotFoundException, StudentAlreadyExistsException {
-        return null;
+    public StudentReadOnlyDTO updateStudent(Integer id, StudentUpdateDTO dto) throws StudentDAOException, StudentNotFoundException, StudentAlreadyExistsException {
+        Student student;
+        Student insertedStudent;
+
+        try {
+            if (studentDAO.getById(id) == null)
+                throw new StudentNotFoundException("Error. Student with id " + dto.getId() + " not found.");
+
+            student = studentDAO.getByEmail(dto.getEmail());
+            if (student != null && !student.getId().equals(id))
+                throw new StudentAlreadyExistsException("Student with id " + id + " already exists.");
+
+            insertedStudent = studentDAO.update(Mapper.mapStudentUpdateToModel(dto));
+            // some logging
+            return Mapper.mapStudentToReadOnlyDTO(insertedStudent).orElse(null);
+
+        } catch (StudentDAOException | StudentNotFoundException | StudentAlreadyExistsException e) {
+            throw e;
+        }
     }
 
     @Override
     public void deleteStudent(Integer id) throws StudentDAOException, StudentNotFoundException {
 
+        try {
+            if (studentDAO.getById(id) == null)
+                throw new StudentNotFoundException("Student with id " + id + " not found.");
+
+            studentDAO.delete(id);
+        } catch (StudentDAOException | StudentNotFoundException e) {
+            throw e;
+        }
     }
 
     @Override
     public StudentReadOnlyDTO getStudentById(Integer id) throws StudentDAOException, StudentNotFoundException {
-        return null;
+        Student student;
+
+        try {
+            student = studentDAO.getById(id);
+            return Mapper.mapStudentToReadOnlyDTO(student).orElseThrow(() -> new StudentNotFoundException("Student with id" + id + " not found"));
+        } catch (StudentDAOException | StudentNotFoundException e) {
+            throw e;
+        }
     }
 
     @Override

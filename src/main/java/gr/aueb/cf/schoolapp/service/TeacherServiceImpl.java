@@ -68,7 +68,7 @@ public class TeacherServiceImpl implements ITeacherService {
             Teacher updatedTeacher =  teacherDAO.update(teacher);
             // logging
             return Mapper.mapTeacherToReadOnlyDTO(updatedTeacher).orElse(null);
-        } catch (TeacherDAOException | TeacherNotFoundException e) {
+        } catch (TeacherDAOException | TeacherNotFoundException | TeacherAlreadyExistsException e) {
             //e.printStackTrace();
             // logging
             // rollback
