@@ -2,6 +2,7 @@
 This is a Java JSP application project developed for educational purposes.<br>
 An SSR (Server Side Rendering) app with session-based authentication.<br>
 To run the app, a mySQL database setup is required.<br>
+Feel free to ask for a snapshot.
 
 Gov.gr Logo source: [Gov.gr logo on Wikimedia Commons](https://el.wikipedia.org/wiki/%CE%91%CF%81%CF%87%CE%B5%CE%AF%CE%BF:Gov.gr_logo.png)
 
