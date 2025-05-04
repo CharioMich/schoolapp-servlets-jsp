@@ -1,6 +1,6 @@
 # schoolapp-servlets-jsp
 This is a Java JSP application project developed for educational purposes.<br>
-An SSR (Server Side Rendering) app with session-based authentication.<br>
+An SSR (Server Side Rendering) app with layered architecture and session-based authentication.<br>
 To run the app, a mySQL database setup is required.<br>
 Feel free to ask for a snapshot.
 
